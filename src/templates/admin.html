@@ -1,0 +1,13 @@
+<html>
+<body>
+Hi admin
+
+
+<a href="/logout">Logout</a>
+{% for message in get_flashed_messages() %}
+  {{message}}
+{% endfor %}
+</body>
+
+
+</html>

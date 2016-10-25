@@ -1,0 +1,13 @@
+<html>
+
+<body>
+
+<a href="/login">Login</a>
+{% for message in get_flashed_messages() %}
+  {{message}}
+{% endfor %}
+
+</body>
+
+
+</html>

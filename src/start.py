@@ -133,6 +133,6 @@ def welcome():
    return render_template('welcome.html')
   
 if __name__ == "__main__":
- app.run( host ='0.0.0.0', debug = True )
+ app.run( host ='0.0.0.0', debug = False )
  #code from the stackoverflow to remove loading erors
  app.run(threaded=True)

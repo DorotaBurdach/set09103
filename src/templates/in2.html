@@ -23,7 +23,7 @@
 			{% for row in tree_list %}
 			<div class="col-md-4">
 			<div class="panel panel-default" >
-                      <div class="panel-heading"><h3>{{ row["name"] }}</h3>{{ row["tag"] }}</div>
+                      <div class="panel-heading"><h3>{{ row["name"] }}</h3><p><span  style="white-space: nowrap;">{{ row["tag"] }}</span></p></div>
                       <div class="panel-body">
 					 <a href="/trees/{{ row['page_name'] }}"> <img src="http://localhost:5000/static/img/{{ row['img'] }}" style=" height:150px " class="img-responsive">
 				read more...</a>

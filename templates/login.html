@@ -1,0 +1,33 @@
+	<form  action="" method="post">
+
+      User Name
+	  
+	   <input type="text" id="input_name" placeholder="username" name="username" value="{{
+	      request.form.username }}">
+	   </div>
+	   
+	   
+	    
+     Password
+	
+	   <input type="password" id="input_pass" placeholder="Password" name="password" value="{{
+	      request.form.password }}">
+	  
+	   </div>
+	   <div>
+	   {% if error%}
+	   <p style="color:red;"><strong>Error:</strong> {{ error }} </p>
+	{% endif %}
+	{% for message in get_flashed_messages() %}
+ <p class="error" style="color:red;"> {{message}} </p><br>
+{% endfor %}
+	   
+	   </div>
+	   
+	   
+	   
+
+	   <input  type="submit" value="Login">
+	  
+	</form>
+	

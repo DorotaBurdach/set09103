@@ -1,0 +1,31 @@
+<html>
+   <body>
+      
+      <form action = "" method = "POST">
+         <h3>insert</h3>
+         Title<br>
+         <input type = "text" name = "title" /></br>
+         
+     <!--    two<br>
+         <textarea name = "add" ></textarea><br>-->
+         
+         Author<br>
+         <input type = "text" name = "author" /><br>
+		 
+		 Desc<br>
+         <input type = "text" name = "desc" /><br>
+         
+      
+         <input type = "submit" value = "submit" /><br>
+      </form>
+	  {% if msg %}
+      <p> {{msg}}</p>
+	  
+	  {% endif %}
+	  
+	  
+	  {% for message in get_flashed_messages() %}
+    {{ message }}
+  {% endfor %}
+   </body>
+</html>

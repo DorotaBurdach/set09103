@@ -1,0 +1,43 @@
+<html>
+   <body>
+      {% for row in path %}
+      <form action = "/edit/{{ row['id'] }}" method = "POST" style="">
+         <h3>insert</h3>
+         Name<br>
+         <input type = "text" name = "p_name" placeholder="{{row['p_name']}}" /></br>
+         
+   
+         Surname<br>
+         <input type = "text" name = "p_surname" placeholder="{{row['p_surname']}}"/><br>
+		 
+		 Info<br>
+         <input type = "text" name = "p_desc" placeholder="{{row['p_desc']}}"/><br>
+         
+      
+         <input type = "submit" value = "submit" /><br>
+      </form>
+	  
+	  	{%  endfor %}
+		 <form action = "" method = "POST">
+         <h3>insert</h3>
+         Name<br>
+         <input type = "text" name = "p_name" placeholder="" /></br>
+         
+   
+         Surname<br>
+         <input type = "text" name = "p_surname" placeholder=""/><br>
+		 
+		 Info<br>
+         <input type = "text" name = "p_desc" placeholder=""/><br>
+         
+      
+         <input type = "submit" value = "submit" /><br>
+      </form>
+		hi
+	  {% if msg %}
+      <p> {{msg}}</p>
+	  
+	  {% endif %}
+	  
+   </body>
+</html>

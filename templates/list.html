@@ -1,0 +1,9 @@
+{% for row in list %}
+                  <li><a href="/edit/{{ row['id'] }}">{{ row["p_name"] }}({{ row["p_surname"] }})</a></li>
+                  <li><a href="/delete/{{ row['id'] }}">delete</a></li>
+				{%  endfor %}
+             
+	 {% if msg %}
+      <p> {{msg}}</p>
+	  
+	  {% endif %}

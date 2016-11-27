@@ -17,20 +17,22 @@
 </div>
 <div class="col-md-8" class="thumbnail" id="transp">
 <br>
-
-  {% if msg %}
-      <p style="color:red;"> {{msg}}</p>
+{% if msg %}
+<div class="alert alert-info">
+  <strong>Info!</strong>   {{msg}}	  
+</div>
+{% endif %}
+  {% for message in get_flashed_messages() %}
+	<br>
+ <h4 class="error" style="color:red;"><b> {{message}} </b></h4>
+{% endfor %}
 	  
-	  {% endif %}
 	  
-	  
-	  {% for message in get_flashed_messages() %}
-    {{ message }}
-  {% endfor %}
+	 
 
       <form action = "" method = "POST">
 
-         <h3>Please enter below:</h3><br><br>
+         <h3>Please fill up all the fields:</h3><br><br>
 	    
 		  <div class="col-md-12" >
 		  	<h2>Personal</h2>

@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 import sqlite3
 from flask import Markup
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.join(APP_ROOT, 'uploads/')
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads/')
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
@@ -39,6 +39,14 @@ def root():
     connection = sqlite3.connect("books.db")
     connection.row_factory = sqlite3.Row
     paths6 = connection.cursor().execute("SELECT * FROM books").fetchall()
+    connection.close()
+
+    connection = sqlite3.connect("books.db")
+    connection.row_factory = sqlite3.Row
+    new = connection.cursor().execute("SELECT * FROM new ORDER BY id DESC LIMIT 3").fetchall()
+    connection.close()
+
+
 
     if request.method == 'POST':
       try:
@@ -62,7 +70,7 @@ def root():
       except:
            msg="Sorry. Something went wrong. Please try again later."
 
-    return render_template("index.html", paths6 = paths6, msg=msg)
+    return render_template("index.html", paths6 = paths6, msg=msg, new=new)
 
 
 	
@@ -77,8 +85,9 @@ def admin():
     connection = sqlite3.connect("books.db")
     connection.row_factory = sqlite3.Row
     all_paths = connection.cursor().execute(sql2).fetchall()
-
+    
     return render_template('admin.html', all_paths = all_paths)
+    connection.close()
   else:
     abort(401)
 
@@ -349,7 +358,7 @@ def uploaded_file(filename):
         b5_author = request.form['b5_author']
         b5_desc = request.form['b5_desc']
 
-        if (p_name and p_surname and p_desc):
+        if (p_name and p_surname and p_desc and path_desc and b1_title and b1_author and b1_desc and b2_title and b2_author and b2_desc and b3_title and b3_author and b3_desc and b4_title and b4_author and b4_desc and b5_title and b5_author and b5_desc):
            con = sqlite3.connect("books.db")
            cur = con.cursor()
            cur.execute("INSERT INTO books (p_name, p_surname, p_desc, p_img, path_status, path_desc, b1_title, b1_author, b1_desc, b2_title, b2_author, b2_desc, b3_title, b3_author, b3_desc, b4_title, b4_author, b4_desc, b5_title, b5_author,b5_desc) VALUES (?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?,?)",(p_name,p_surname,p_desc, filename, 1, path_desc,b1_title, b1_author, b1_desc, b2_title, b2_author, b2_desc, b3_title, b3_author, b3_desc, b4_title, b4_author,  b4_desc, b5_title, b5_author,  b5_desc) )
@@ -360,7 +369,7 @@ def uploaded_file(filename):
            flash(message)
 
         else:
-           msg = "fill up everything man"
+           msg = "Please fill up all the fields"
 
       except:
            msg="something went wrong"

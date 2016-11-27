@@ -6,5 +6,5 @@ cursor = conn.cursor()
 
 # create a table
 cursor.execute("""CREATE TABLE mail
-                  (id INTEGER PRIMARY KEY, name text, email text, title text, message text)
+                  (id INTEGER PRIMARY KEY, name text, email text, title text, message text, page text)
                """)

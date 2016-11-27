@@ -46,11 +46,12 @@ def root():
         email = request.form['email']
         title = request.form['title']
         message = request.form['message']
+		
 
         if (name and email and title and message):
            con = sqlite3.connect("books.db")
            cur = con.cursor()
-           cur.execute("INSERT INTO mail (name,email,title, message) VALUES (?,?,?,?)",(name,email,title,message) )
+           cur.execute("INSERT INTO mail (name,email,title, message, page) VALUES (?,?,?,?,?)",(name,email,title,message, 1) )
 
            con.commit()
            msg = "Thank you. Your email has been sent successfully."
@@ -326,11 +327,32 @@ def uploaded_file(filename):
         p_name = request.form['p_name']
         p_surname = request.form['p_surname']
         p_desc = request.form['p_desc']
+        path_desc = request.form['path_desc']	
+		
+        b1_title = request.form['b1_title']
+        b1_author = request.form['b1_author']
+        b1_desc = request.form['b1_desc']
+
+        b2_title = request.form['b2_title']
+        b2_author = request.form['b2_author']
+        b2_desc = request.form['b2_desc']
+
+        b3_title = request.form['b3_title']
+        b3_author = request.form['b3_author']
+        b3_desc = request.form['b3_desc']
+
+        b4_title = request.form['b4_title']
+        b4_author = request.form['b4_author']
+        b4_desc = request.form['b4_desc']
+
+        b5_title = request.form['b5_title']
+        b5_author = request.form['b5_author']
+        b5_desc = request.form['b5_desc']
 
         if (p_name and p_surname and p_desc):
            con = sqlite3.connect("books.db")
            cur = con.cursor()
-           cur.execute("INSERT INTO books (p_name,p_surname,p_desc, path_desc ) VALUES (?,?,?,?)",(p_name,p_surname,p_desc, filename) )
+           cur.execute("INSERT INTO books (p_name, p_surname, p_desc, p_img, path_status, path_desc, b1_title, b1_author, b1_desc, b2_title, b2_author, b2_desc, b3_title, b3_author, b3_desc, b4_title, b4_author, b4_desc, b5_title, b5_author,b5_desc) VALUES (?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?,?)",(p_name,p_surname,p_desc, filename, 1, path_desc,b1_title, b1_author, b1_desc, b2_title, b2_author, b2_desc, b3_title, b3_author, b3_desc, b4_title, b4_author,  b4_desc, b5_title, b5_author,  b5_desc) )
 
            con.commit()
            msg = "Record successfully added"
@@ -361,6 +383,39 @@ def preview():
    return render_template('preview.html', last = last)
   else:
     abort(401)
+
+@app.route('/contact', methods=('GET', 'POST'))
+def contact():
+  if session.get('session_guest'):
+    msg = None
+    
+
+    if request.method == 'POST':
+      try:
+        name = request.form['name']
+        email = request.form['email']
+        title = request.form['title']
+        message = request.form['message']
+		
+
+        if (name and email and title and message):
+           con = sqlite3.connect("books.db")
+           cur = con.cursor()
+           cur.execute("INSERT INTO mail (name,email,title, message, page) VALUES (?,?,?,?,?)",(name,email,title,message, 2) )
+
+           con.commit()
+           msg = "Thank you. Your email has been sent successfully."
+
+        else:
+           msg = "Please fill up all fields"
+
+      except:
+           msg="Sorry. Something went wrong. Please try again later."
+
+    return render_template("contact.html", msg=msg)	
+  else:
+    abort(401)
+	
 
 if __name__ == "__main__":
  app.run( host ='0.0.0.0', debug = True )

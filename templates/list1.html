@@ -11,7 +11,7 @@
 <!--=================HOME=======================-->
 <a href="/list2" class="page-scroll btn btn-xl btn-warning" style="color:black">See Waiting</a>
  <a href="/list1" class="page-scroll btn btn-xl btn-success" style="color:black" disabled>Aproved</a>
-	 <h3>title/ name / email</h3>
+	 <h3>guest name</h3>
 	{% for row in list3 %}
    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
@@ -19,13 +19,72 @@
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#colapse_{{ row['id'] }}" aria-expanded="false" aria-controls="collapseTwo">
-          {{ row["p_name"] }} {{ row["p_surname"] }}/ {{ row["email"] }}  <a href="/delete/{{ row['id'] }}" class="pull-right" style="color:red">delete message</a> <a href="/edit/{{ row['id'] }}" class="pull-right" style="color:green; margin-right:20px;">edit  </a>
+          {{ row["p_name"] }} {{ row["p_surname"] }}  <a href="/delete/{{ row['id'] }}" class="pull-right" style="color:red">delete message</a> <a href="/edit/{{ row['id'] }}" class="pull-right" style="color:green; margin-right:20px;">edit  </a>
         </a>
       </h4>
     </div>
     <div id="colapse_{{ row['id'] }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo2">
       <div class="panel-body">
-        {{ row["message"] }}
+             <div class="row">
+	   
+				<div class="col-md-2">
+				<hr style=" border-top: 3px solid orange;">
+					<b>Guest image</b><br>
+					{{ row["p_img"] }}
+					<img src="http://localhost:5000/static/uploads/{{ row['p_img'] }}" class="img-responsive">
+				</div>
+				<div class="col-md-5">
+				<hr style=" border-top: 3px solid orange;">
+					<b>Guest description:</b><br>
+					{{ row["p_desc"] }}
+				</div>
+				<div class="col-md-5">
+				<hr style=" border-top: 3px solid orange;">
+					<b>Trial description</b><br>
+					{{ row["path_desc"] }}
+				</div>
+	  
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2">
+				 <hr style=" border-top: 3px solid orange;">
+					<h3>Book 1</h3>
+					<b>Title:</b><br>{{ row["b1_title"] }}<br>
+					<b>Author:</b><br>{{ row["b1_author"] }}<br>
+					<b>Desc:</b><br>{{ row["b1_desc"] }}<br>
+				</div>
+				<div class="col-md-2">
+					<hr style=" border-top: 3px solid orange;">
+					<h3>Book 2</h3><br>
+					<b>Title:</b><br>{{ row["b2_title"] }}<br>
+					<b>Author:</b><br>{{ row["b2_author"] }}<br>
+					<b>Description:</b><br>{{ row["b2_desc"] }}<br>
+				</div>
+				<div class="col-md-2">
+					<hr style=" border-top: 3px solid orange;">
+					<h3>Book 3</h3><br>
+					<b>Title:</b><br>{{ row["b3_title"] }}<br>
+					<b>Author:</b><br>{{ row["b3_author"] }}<br>
+					<b>Description:</b><br>{{ row["b3_desc"] }}<br>
+				</div>
+				<div class="col-md-2">
+					<hr style=" border-top: 3px solid orange;">
+					<h3>Book 4</h3><br>
+					<b>Title:</b><br>{{ row["b4_title"] }}<br>
+					<b>Author:</b><br>{{ row["b4_author"] }}<br>
+					<b>Description:</b><br>{{ row["b4_desc"] }}<br>
+				</div>
+				<div class="col-md-2">
+					<hr style=" border-top: 3px solid orange;">
+					<h3>Book 5</h3><br>
+					<b>Title:</b><br>{{ row["b5_title"] }}<br>
+					<b>Author:</b><br>{{ row["b5_author"] }}<br>
+					<b>Description:</b><br>{{ row["b5_desc"] }}<br>
+				</div>
+				
+				</div>
+			</div>
     </div>
   </div>
   

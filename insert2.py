@@ -38,7 +38,7 @@ def root():
     msg = None
     connection = sqlite3.connect("books.db")
     connection.row_factory = sqlite3.Row
-    paths6 = connection.cursor().execute("SELECT * FROM books ORDER BY id DESC LIMIT 6").fetchall()
+    paths6 = connection.cursor().execute("SELECT * FROM books WHERE path_status = 2 ORDER BY id DESC LIMIT 6").fetchall()
     connection.close()
 
     connection = sqlite3.connect("books.db")

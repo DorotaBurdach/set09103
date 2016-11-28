@@ -72,18 +72,25 @@
 {% for row in chosen_path %}
 
 
- <header id="hed_2">
+ <header>
+	<div class="thumbnail" style="background-color:rgba(0,0,0, 0.1);">
         <div class="container">
 		    <div class="intro-text">
-		<div class="row">
+		<div class="row" class="thumbnail" style="background-color:rgba(0,0,0, 0.5); border-color:transparent";>
+		
 		<div class="col-md-6">
+		 <br> <br>
 		<img src="http://localhost:5000/static/uploads/{{ row['p_img'] }}" class="img-responsive">
+		<br> <br>
 		</div>
 		
 		<div class="col-md-6">
+		<br> <br>
 		    <div class="intro-heading">{{ row['p_name'] }}<br>{{ row['p_surname'] }}</div>
 			 <div class="intro-lead-in" >{{ row['p_desc'] }}</div>
 		 <a href="#path" class="page-scroll btn btn-xl" style="color:black">See the trial</a>
+		 <br> <br>
+		 </div>
 		</div>
 		
 		</div>
@@ -92,6 +99,7 @@
             
             </div>
         </div>
+		</div>
     </header>
 
    

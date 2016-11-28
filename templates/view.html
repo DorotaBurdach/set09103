@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Library in Kowary</title>
+
+    <!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}">
+  
+
+    <!-- Custom Fonts -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css')}}">
+
+
+
+</head>
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-custom navbar-fixed-top" style="background-color: black;">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top" style="color:#fec503;">Library in Kowary</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+					   <li>
+                        <a class="page-scroll" href="/">Home</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#new">What's new</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#paths">Paths</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#team">Team</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+{% for row in chosen_path %}
+
+
+ <header id="hed_2">
+        <div class="container">
+		    <div class="intro-text">
+		<div class="row">
+		<div class="col-md-6">
+		<img src="http://localhost:5000/static/uploads/{{ row['p_img'] }}" class="img-responsive">
+		</div>
+		
+		<div class="col-md-6">
+		    <div class="intro-heading">{{ row['p_name'] }}<br>{{ row['p_surname'] }}</div>
+			 <div class="intro-lead-in" >{{ row['p_desc'] }}</div>
+		 <a href="#path" class="page-scroll btn btn-xl" style="color:black">See the trial</a>
+		</div>
+		
+		</div>
+        
+             
+            
+            </div>
+        </div>
+    </header>
+
+   
+	
+	
+	
+	    <!-- About Section -->
+    <section id="path">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">My trial</h2>
+                    <h3 class="section-subheading text-muted">{{ row["path_desc"] }}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="http://localhost:5000/static/img/view/1.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 style="color:orange"><b>{{ row["b1_title"] }}</b></h4>
+                                    <h4 class="subheading">{{ row["b1_author"] }}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">{{ row["b1_desc"] }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="http://localhost:5000/static/img/view/4.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 style="color:orange"><b>{{ row["b2_title"] }}</b></h4>
+                                    <h4 class="subheading">{{ row["b2_author"] }}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">{{ row["b2_desc"] }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="http://localhost:5000/static/img/view/2.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 style="color:orange"><b>{{ row["b3_title"] }}</b></h4>
+                                    <h4 class="subheading">{{ row["b3_author"] }}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">{{ row["b3_desc"] }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="http://localhost:5000/static/img/view/5.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 style="color:orange"><b>{{ row["b4_title"] }}</b></h4>
+                                    <h4 class="subheading">{{ row["b4_author"] }}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">{{ row["b4_desc"] }}</p>
+                                </div>
+                            </div>
+                        </li>
+						         <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="http://localhost:5000/static/img/view/3.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 style="color:orange"><b>{{ row["b5_title"] }}</b></h4>
+                                    <h4 class="subheading">{{ row["b5_author"] }}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">{{ row["b5_desc"] }}</p>
+                                </div>
+                            </div>
+                        </li>
+						
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>Fallow    
+                                    <br>and
+                                    <br>read!</h4>{%  endfor %}
+                 
+									
+									
+           </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+	    
+
+
+
+
+
+
+
+<footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                   
+                </div>
+                <div class="col-md-4">
+                     <span class="copyright">Copyright &copy; Library in Kowary 2016</span>
+                </div>
+                <div class="col-md-4">
+                  
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- jQuery -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}">
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+	<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+	<script src="{{ url_for('static', filename='js/jqBootstrapValidation.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/contact_me.js')}}"></script>
+
+    <!--  JavaScript -->
+	 <script src="{{ url_for('static', filename='js/agency.min.js')}}"></script>
+
+
+</body>
+
+</html>

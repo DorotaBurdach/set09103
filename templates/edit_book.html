@@ -1,0 +1,57 @@
+{%extends "base_admin.html"%}
+{%block content%}
+<div class="container" style="margin-top:100px;" >
+     
+		
+		<a href="/up_new" class="page-scroll btn btn-xl btn-success" style="color:black">+Add book</a>
+ 
+		
+		 {% for row in book %}
+	  <form action = "/edit_book/{{ row['id'] }}" method = "POST">
+ 
+         <h2 style="color:orange;">Update book:</h2><br><br>
+	    {% if msg %}
+     <div class="alert alert-info">
+  <strong>Info!</strong>   {{msg}}	  
+</div>
+	  
+	  {% endif %}
+		 
+      
+	    		
+		  <div class="col-md-12" >
+	
+		 Title:
+         <input type = "text" class="form-control" name = "title" value="{{row['title']}}"/><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Author:
+         <input type = "text" class="form-control" name = "author" value="{{row['author']}}"/><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Description:
+         <input type = "text" class="form-control" name = "desc" value="{{row['desc']}}" /><br>
+         </div>
+		 
+		  <div class="col-md-12" >
+		 Img:
+         <input type = "text" class="form-control" name = "img" value="{{row['img']}}" /><br>
+         </div>
+
+
+		 
+		  <div class="col-md-12" >
+		<button type="submit" class="btn btn-warning btn-block" style="color:black">Submit</button>
+         </div>
+        	
+      </form>
+	    {%  endfor %}
+
+		
+	  
+	  
+	  
+</div>
+{%endblock%}

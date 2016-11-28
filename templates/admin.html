@@ -1,1 +1,198 @@
-hi admin
+{%extends "base_admin.html"%}
+{%block content%}
+
+<div class="container" style="margin-top:100px;" >
+	<div class="row" >
+  			<div class="col-md-3" id="leftCol">
+              	
+				<div class="well"> 
+<ul class="nav nav-stacked" id="sidebar">
+				
+				
+                  <li><a href="">llllll</a></li>
+                  <li><a href="">llllll</a></li>
+				<li><a href="">llllll</a></li>
+              	</ul>
+				
+	</div>
+
+      		</div>  
+      		<div class="col-md-9" style="background-color: #fff;">
+<!-- Begin Body -->
+
+
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+  <li><a data-toggle="tab" href="#menu1">Seasons List</a></li>
+  <li><a data-toggle="tab" href="#menu2">Trees List</a></li>
+  <li><a data-toggle="tab" href="#contact">Contact</a></li>
+</ul>
+
+<div class="tab-content">
+
+<!--=================HOME=======================-->
+  <div id="home" class="tab-pane fade in active">
+    <h3>HOME</h3>
+	
+	
+    <h4 style="color:red">
+{% for message in get_flashed_messages() %}
+  {{message}}
+{% endfor %}
+	
+	</h4>
+	<p>Welcome to the admin panel</p>
+	<div class="row">
+	<div class="col-md-3">
+	<img src="http://localhost:5000/static/img/panel.png" class="img-responsive">
+	</div>
+	<div class="col-md-9">
+	<br>
+	<br>
+	<h4>Page content</h4>
+	<p>Here you can see all the page content connected to the database.<br>
+	There are two tables for categories :<br>
+	- seasons<br>
+	- trees <br>
+	Please click the season or trees list to see all the content for each categories. 
+	If you wish to add, update or delete any of the data please use the contact for to email the developer.
+	</p>	
+	</div>
+	</div>
+	
+  </div>
+  
+<!--=================SEASONS=======================-->
+
+  <div id="menu1" class="tab-pane fade">
+  <center>
+    <h3>All seasons list</h3>
+    <p>See below seasons with the additional data</p>
+	
+
+	</center>
+	<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Page Name</th>
+		<th>Image name</th>
+		<th>Image</th>
+		<th>Months</th>
+		<th>Description</th>
+		
+      </tr>
+    </thead>
+    <tbody>
+	{% for row in mmm %}
+      <tr>
+        
+        <td>{{ row["name"] }}</td>
+		<td>{{ row['page_name'] }}</td>
+		<td>{{ row["img"] }}</td>
+		<td><img src="http://localhost:5000/static/img/{{ row['img'] }}" class="img-responsive"></td>
+        <td>{{ row["months"] }}</td>
+		<td>{{ row['desc'] }}</td>
+        
+      </tr>
+     {%  endfor %}
+    </tbody>
+  </table>
+	
+	
+  </div>
+  
+  
+<!--=================TREES=======================-->
+
+  <div id="menu2" class="tab-pane fade">
+  
+    <center>
+      <h3>All trees list</h3>
+    <p>See below trees with the additional data.</p>
+	  </center>
+	
+	<table class="table table-striped">
+    <thead>
+	
+	
+      <tr>
+        <th>Name</th>
+        <th>Celtic Name</th>
+		<th>Tag</th>
+		<th>Page Name</th>
+		<th>Season</th>
+		<th>Large Image</th>
+		<th>Small Image</th>
+		<th>Healing</th>
+		<th>Description/Energy</th>
+		
+      </tr>
+    </thead>
+    <tbody>
+	{% for row in tree_list %}
+      <tr>
+        
+        <td>{{ row["name"] }}</td>
+		<td>{{ row["c_name"] }}</td>
+		<td>{{ row["tag"] }}</td>
+		<td>{{ row['page_name'] }}</td>
+		<td>{{ row['season'] }}</td>
+		<td>{{ row["img"] }}<br><img src="http://localhost:5000/static/img/{{ row['img'] }}" class="img-responsive"></td>
+		<td>{{ row["img2"] }}<br><img src="http://localhost:5000/static/img/{{ row['img2'] }}" class="img-responsive"></td>
+        <td>{{ row["healing"] }}</td>
+		<td>{{ row['energy'] }}</td>
+        
+      </tr>
+     {%  endfor %}
+    </tbody>
+  </table>
+  </div>
+  
+  
+<!--=================CONTACT=======================-->
+  
+   <div id="contact" class="tab-pane fade">
+    <h3>Contact</h3>
+   
+	
+	<div class="row">
+	<div class="col-md-5">
+	
+	 <p>If you wish to send an email please click link below and fill up the form with receiver : admin@sacred.treese.com</p>
+	 <br><br>
+	 <a href="https://anonymousemail.me"  target="_blank" class="btn  btn-info btn-block"><i class="icon-home icon-white"></i> Send an email</a>
+	</div>
+	<div class="col-md-6">
+
+	  	<img src="http://localhost:5000/static/img/mail.jpg" style="width:120%" class="img-responsive">
+		<br>
+	
+	
+
+	</div>
+	
+	
+	<div class="col-md-1">
+	</div>
+	</div>
+	
+	  
+</div>
+	  
+	  
+  </div>
+  
+  
+
+
+</div>
+
+        	
+      		</div> 
+  	</div>
+
+
+
+{%endblock%}

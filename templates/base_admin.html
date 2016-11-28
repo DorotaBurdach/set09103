@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Admin Panel</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+
+
+	
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+			</head>
+<body>
+
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/admin" class="navbar-brand" style="color:orange;">Admin Panel</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+	<ul class="nav navbar-nav">
+      <li>
+          <a href="/admin">Home</a>
+        </li>
+        <li>
+          <a href="/list_books">Books</a>
+        </li>
+		
+		<li>
+          <a href="/list2">Trials</a>
+        </li>
+		
+		<li>
+          <a href="/messages">Messages</a>
+        </li>
+       
+      </ul>
+      <ul class="nav navbar-nav pull-right">
+      
+        <li>
+          <a href="/logout">Logout</a>
+        </li>
+       
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+{%block content %}{%endblock%}
+
+
+	
+<footer style="background-color:#222222; color:white; margin-bottom:-10px; margin-top:10%; width:100%; position:absolute, margin-top: 150px">
+<div class="row">
+
+<div class="col-md-3">
+</div>
+<div class="col-md-6 text-center">
+ <br>
+
+     <span class="copyright">Copyright &copy; Library in Kowary 2016</span>  
+<br>
+
+
+    <br> <br>
+   </div>
+   <div class="col-md-3">
+   </div>
+  </div>
+</footer>
+
+
+
+
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>	
+</body>
+</html>

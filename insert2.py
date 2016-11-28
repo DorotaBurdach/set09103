@@ -38,7 +38,7 @@ def root():
     msg = None
     connection = sqlite3.connect("books.db")
     connection.row_factory = sqlite3.Row
-    paths6 = connection.cursor().execute("SELECT * FROM books").fetchall()
+    paths6 = connection.cursor().execute("SELECT * FROM books ORDER BY id DESC LIMIT 6").fetchall()
     connection.close()
 
     connection = sqlite3.connect("books.db")
@@ -72,8 +72,19 @@ def root():
 
     return render_template("index.html", paths6 = paths6, msg=msg, new=new)
 
+@app.route('/view/<int:id>',methods=['GET','POST'])
+def view(id):
 
-	
+    sql2 = ('SELECT * FROM books WHERE id = ?')
+    connection = sqlite3.connect("books.db")
+    connection.row_factory = sqlite3.Row
+    chosen_path = connection.cursor().execute(sql2,[id]).fetchall()
+
+    return render_template("view.html", chosen_path=chosen_path)
+    connection.close()
+
+
+
 #-----------------------------------------ADMIN PANEL-------------------
 
 
@@ -118,15 +129,53 @@ def logout():
 #---------------------------------BOOKS ADMIN
 #list of books
 @app.route('/list_books')
-def list():
+def list_books():
     sql = ('SELECT * FROM new')
     connection = sqlite3.connect("books.db")
     connection.row_factory = sqlite3.Row
     list_books = connection.cursor().execute(sql).fetchall()
 
-    return render_template('list.html', list_books=list_books)
+    return render_template('list_books.html', list_books=list_books)
     connection.close()
 
+@app.route('/edit_book/<int:id>',methods=['GET','POST'])
+def edit_book(id):
+  if session.get('logged_in'):
+    msg = None
+   
+    sql2 = ('SELECT * FROM new WHERE id = ?')
+    connection = sqlite3.connect("books.db")
+    connection.row_factory = sqlite3.Row
+    book = connection.cursor().execute(sql2,[id]).fetchall()
+    
+    if request.method == 'POST':
+	
+          title= request.form['title']
+          author= request.form['author']
+          img= request.form['img']
+          desc= request.form['desc']
+         
+		  
+          con = sqlite3.connect("books.db")
+          cur = con.cursor()
+          query = ("UPDATE new SET title = ?,author = ?, img = ?, desc = ? WHERE id=?")
+          
+          cur.execute(query,(title,author, img , desc, id))
+          con.commit()
+          msg = "Record updated. Refresh to see the changes."
+    return render_template('edit_book.html',id=id, book=book, msg=msg)	
+  else:
+    abort(401)	
+	
+@app.route('/delete_book/<int:id>',methods=['GET', 'POST'])
+def delete_book(id):
+   con = sqlite3.connect("books.db")
+   cur = con.cursor()
+   cur.execute('DELETE FROM new WHERE id=?',[id])
+   con.commit()
+   msg = "Book Deleted"
+
+   return redirect(url_for('list_books'))
 	
 @app.route('/up_new', methods=['GET', 'POST'])
 def upload_file_new():
@@ -190,12 +239,24 @@ def uploaded_file_new(filename):
 @app.route('/list2')
 def list2():
 
-    sql5 = ('SELECT * FROM books')
+    sql5 = ('SELECT * FROM books WHERE path_status = 1')
     connection = sqlite3.connect("books.db")
     connection.row_factory = sqlite3.Row
     list3 = connection.cursor().execute(sql5).fetchall()
 
     return render_template('list.html', list3=list3)
+    connection.close()
+	
+#approved	
+@app.route('/list1')
+def list1():
+
+    sql5 = ('SELECT * FROM books WHERE path_status = 2')
+    connection = sqlite3.connect("books.db")
+    connection.row_factory = sqlite3.Row
+    list3 = connection.cursor().execute(sql5).fetchall()
+
+    return render_template('list1.html', list3=list3)
     connection.close()
 
 
@@ -234,20 +295,47 @@ def insert():
 def edit(id):
   if session.get('logged_in'):
     msg = None
-    print id
+   
     sql2 = ('SELECT * FROM books WHERE id = ?')
     connection = sqlite3.connect("books.db")
     connection.row_factory = sqlite3.Row
     path = connection.cursor().execute(sql2,[id]).fetchall()
-    print path
+    
     if request.method == 'POST':
+	
+          p_name= request.form['p_name']
+          p_surname= request.form['p_surname']
+          p_desc= request.form['p_desc']
+          status= request.form['status']
+          p_img= request.form['p_img']
+		  
+          b1_title = request.form['b1_title']
+          b1_author = request.form['b1_author']
+          b1_desc = request.form['b1_desc']
+
+          b2_title = request.form['b2_title']
+          b2_author = request.form['b2_author']
+          b2_desc = request.form['b2_desc']
+
+          b3_title = request.form['b3_title']
+          b3_author = request.form['b3_author']
+          b3_desc = request.form['b3_desc']
+
+          b4_title = request.form['b4_title']
+          b4_author = request.form['b4_author']
+          b4_desc = request.form['b4_desc']
+
+          b5_title = request.form['b5_title']
+          b5_author = request.form['b5_author']
+          b5_desc = request.form['b5_desc']
+		  
           con = sqlite3.connect("books.db")
           cur = con.cursor()
-          query = ("UPDATE books SET p_name = ?,p_surname = ?, p_desc = ? WHERE id=?")
-          print id
-          cur.execute(query,(request.form['p_name'],request.form['p_surname'],request.form['p_desc'],id))
+          query = ("UPDATE books SET p_name = ?,p_surname = ?, p_desc = ?, path_status = ?, p_img = ?, b1_title =?, b1_author =?, b1_desc=? , b2_title =?, b2_author =?, b2_desc=? , b3_title =?, b3_author =?, b3_desc=?, b4_title =?, b4_author =?, b4_desc=?, b5_title =?, b5_author =?, b5_desc=? WHERE id=?")
+          
+          cur.execute(query,(p_name, p_surname, p_desc, status, p_img, b1_title, b1_author, b1_desc, b2_title, b2_author, b2_desc, b3_title, b3_author, b3_desc, b4_title, b4_author, b4_desc, b5_title, b5_author, b5_desc, id))
           con.commit()
-          msg = "Record update"
+          msg = "Record updated. Refresh to see the changes."
     return render_template('edit.html',id=id, path=path, msg=msg)	
   else:
     abort(401)
@@ -260,7 +348,39 @@ def delete(id):
    con.commit()
    msg = "Deleted"
 
-   return redirect(url_for('list'))
+   return redirect(url_for('list2'))
+   
+   
+@app.route('/messages') 
+def messages_admin():
+  if session.get('logged_in'):
+
+    sql5 = ('SELECT * FROM mail WHERE page = 1')
+    connection = sqlite3.connect("books.db")
+    connection.row_factory = sqlite3.Row
+    page = connection.cursor().execute(sql5).fetchall()
+
+
+    sql5 = ('SELECT * FROM mail WHERE page=2')
+    connection = sqlite3.connect("books.db")
+    connection.row_factory = sqlite3.Row
+    guest = connection.cursor().execute(sql5).fetchall()
+
+    return render_template('messages.html', page=page, guest=guest)
+  else:
+    abort(401)
+
+@app.route('/delete_mail/<int:id>',methods=['GET', 'POST'])
+def delete_mail(id):
+   con = sqlite3.connect("books.db")
+   cur = con.cursor()
+   cur.execute('DELETE FROM mail WHERE id=?',[id])
+   con.commit()
+   msg = "Message Deleted"
+
+   return redirect(url_for('messages_admin'))
+   
+  
 #-----------------------------------GUEST PANEL---------------------------
 
 

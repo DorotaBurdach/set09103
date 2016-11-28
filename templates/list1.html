@@ -5,16 +5,13 @@
 	<div class="row" >
 
 <div class="row">
-<h2 style="color:orange;">Trials: Waiting for approval</h2>
+<h2 style="color:orange;">Trials: Aproved</h2>
 <div class="">
 
 <!--=================HOME=======================-->
-
-<a href="/list2" class="page-scroll btn btn-xl btn-warning" style="color:black" disabled>Waiting</a>
- <a href="/list1" class="page-scroll btn btn-xl btn-success" style="color:black">See Approved</a>
-
-    <h3>title/ name / email</h3>
-	
+<a href="/list2" class="page-scroll btn btn-xl btn-warning" style="color:black">See Waiting</a>
+ <a href="/list1" class="page-scroll btn btn-xl btn-success" style="color:black" disabled>Aproved</a>
+	 <h3>title/ name / email</h3>
 	{% for row in list3 %}
    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
@@ -22,7 +19,7 @@
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#colapse_{{ row['id'] }}" aria-expanded="false" aria-controls="collapseTwo">
-          {{ row["p_name"] }} {{ row["p_surname"] }}/ {{ row["email"] }} <a href="/delete/{{ row['id'] }}" class="pull-right" style="color:red">delete trial</a>   <a href="/edit/{{ row['id'] }}" class="pull-right" style="color:green; margin-right:20px;">edit trial</a>
+          {{ row["p_name"] }} {{ row["p_surname"] }}/ {{ row["email"] }}  <a href="/delete/{{ row['id'] }}" class="pull-right" style="color:red">delete message</a> <a href="/edit/{{ row['id'] }}" class="pull-right" style="color:green; margin-right:20px;">edit  </a>
         </a>
       </h4>
     </div>

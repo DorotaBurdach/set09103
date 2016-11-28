@@ -237,6 +237,20 @@ header {
   text-align: center;
   color: white;
 }
+
+header #hed_2{
+ background-image: url('../img/mountain_path.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  text-align: center;
+  color: white;
+
+}
 header .intro-text {
   padding-top: 100px;
   padding-bottom: 50px;
@@ -551,7 +565,7 @@ section h3.section-subheading {
   margin-top: 0;
 }
 aside.clients img {
-  margin: 50px auto;
+  margin: 50px auto; 
 }
 section#contact {
   background-color: #222222;

@@ -132,6 +132,7 @@ def logout():
 #list of books
 @app.route('/list_books')
 def list_books():
+  if session.get('logged_in'):
     sql = ('SELECT * FROM new')
     connection = sqlite3.connect("books.db")
     connection.row_factory = sqlite3.Row
@@ -139,6 +140,8 @@ def list_books():
 
     return render_template('list_books.html', list_books=list_books)
     connection.close()
+  else:
+    abort(401)
 
 @app.route('/edit_book/<int:id>',methods=['GET','POST'])
 def edit_book(id):
@@ -171,6 +174,7 @@ def edit_book(id):
 	
 @app.route('/delete_book/<int:id>',methods=['GET', 'POST'])
 def delete_book(id):
+  if session.get('logged_in'):
    con = sqlite3.connect("books.db")
    cur = con.cursor()
    cur.execute('DELETE FROM new WHERE id=?',[id])
@@ -178,6 +182,8 @@ def delete_book(id):
    msg = "Book Deleted"
 
    return redirect(url_for('list_books'))
+  else:
+    abort(401)
 	
 @app.route('/up_new', methods=['GET', 'POST'])
 def upload_file_new():
@@ -236,11 +242,11 @@ def uploaded_file_new(filename):
    
   else:
     abort(401)
-#----------------------------------PATHS ADMIN
+#----------------------------------TRIALS ADMIN
 #list of paths
 @app.route('/list2')
 def list2():
-
+  if session.get('logged_in'):
     sql5 = ('SELECT * FROM books WHERE path_status = 1')
     connection = sqlite3.connect("books.db")
     connection.row_factory = sqlite3.Row
@@ -248,11 +254,12 @@ def list2():
 
     return render_template('list.html', list3=list3)
     connection.close()
-	
+  else:
+    abort(401)	
 #approved	
 @app.route('/list1')
 def list1():
-
+  if session.get('logged_in'):
     sql5 = ('SELECT * FROM books WHERE path_status = 2')
     connection = sqlite3.connect("books.db")
     connection.row_factory = sqlite3.Row
@@ -260,7 +267,8 @@ def list1():
 
     return render_template('list1.html', list3=list3)
     connection.close()
-
+  else:
+    abort(401)
 
 #insert path
 @app.route('/insert', methods=('GET', 'POST'))
@@ -344,6 +352,7 @@ def edit(id):
 
 @app.route('/delete/<int:id>',methods=['GET', 'POST'])
 def delete(id):
+  if session.get('logged_in'):
    con = sqlite3.connect("books.db")
    cur = con.cursor()
    cur.execute('DELETE FROM books WHERE id=?',[id])
@@ -351,7 +360,8 @@ def delete(id):
    msg = "Deleted"
 
    return redirect(url_for('list2'))
-   
+  else:
+    abort(401)  
    
 @app.route('/messages') 
 def messages_admin():
@@ -374,6 +384,8 @@ def messages_admin():
 
 @app.route('/delete_mail/<int:id>',methods=['GET', 'POST'])
 def delete_mail(id):
+ if session.get('logged_in'):
+
    con = sqlite3.connect("books.db")
    cur = con.cursor()
    cur.execute('DELETE FROM mail WHERE id=?',[id])
@@ -381,7 +393,8 @@ def delete_mail(id):
    msg = "Message Deleted"
 
    return redirect(url_for('messages_admin'))
-   
+ else:
+    abort(401) 
   
 #-----------------------------------GUEST PANEL---------------------------
 
@@ -487,7 +500,7 @@ def uploaded_file(filename):
 
            con.commit()
            msg = "Record successfully added"
-           message = Markup("<a href='/preview'>Preview</a>")
+           message = Markup("<a href='/preview' class='page-scroll btn btn-xl btn-success' style='color:black'>Preview</a>")
            flash(message)
 
         else:

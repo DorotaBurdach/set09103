@@ -83,7 +83,14 @@ def view(id):
     return render_template("view.html", chosen_path=chosen_path)
     connection.close()
 
-
+@app.route('/all_books')
+def all_books():
+    connection = sqlite3.connect("books.db")
+    connection.row_factory = sqlite3.Row
+    all_books = connection.cursor().execute("SELECT * FROM new").fetchall()
+	
+    return render_template("all_books.html", all_books=all_books)
+    connection.close()
 
 #-----------------------------------------ADMIN PANEL-------------------
 

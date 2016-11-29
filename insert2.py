@@ -89,6 +89,7 @@ def view(id):
 
 
 
+	
 @app.route("/admin")
 def admin():
   if session.get('logged_in'):
@@ -96,6 +97,7 @@ def admin():
     connection = sqlite3.connect("books.db")
     connection.row_factory = sqlite3.Row
     all_paths = connection.cursor().execute(sql2).fetchall()
+	
     
     return render_template('admin.html', all_paths = all_paths)
     connection.close()

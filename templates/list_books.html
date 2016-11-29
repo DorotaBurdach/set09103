@@ -2,11 +2,18 @@
 {%block content%}
 
 <div class="container" style="margin-top:100px;" >
+
+<div class="row" style="background:url('http://localhost:5000/static/img/admin.jpg')" >
+<p style="color:transparent">manage books</p><h1 style="color:orange;margin-left:10px"><b>BOOKS</b></h1>
+<br><br>
+</div>
+<br><br>
+
 	<div class="row" >
-<a href="/up_new" class="page-scroll btn btn-xl btn-success" style="color:black">+Add book</a>
+<a href="/up_new" class="page-scroll btn btn-xl btn-success" >+Add book</a>
 <div class="row">
-<h2 style="color:orange;">Books</h2>
-<div class="">
+
+
 
 {% if msg %}
      <div class="alert alert-info">
@@ -14,8 +21,8 @@
 </div>
 	  
 	  {% endif %}
-
-
+<hr>
+<h2>All books</h2>
 
     <h3>title/ author </h3>
 	
@@ -57,7 +64,7 @@
   </div>
   
    {%  endfor %}
-</div>
+
 
 
 

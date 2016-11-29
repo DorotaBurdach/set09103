@@ -1,105 +1,38 @@
 {%extends "base_admin.html"%}
 {%block content%}
 
-<div class="container" style="margin-top:100px;" >
-
+<div class="container" style="margin-top:100px; padding:20px;" >
+	
+	 <h2>Welcome to the admin panel.<span style="color:red"> {% for message in get_flashed_messages() %}  {{message}} {% endfor %}</span> </h2>
+	
+	<br>
+	
+	<div class="row" style="background:url('http://localhost:5000/static/img/admin.jpg')" >
   	 
       		
 
+	
+	  <div class="row col-md-12 text-center">
+	  	
+			<br><br>
+		<h3 style="color:orange">QUICK LINKS</h3>
+		<br>
+			<a href="/messages" class="btn btn-danger btn-lg" role="button" style="margin:20px;"><h1><span class="glyphicon glyphicon-envelope"></span></h1>Read Mails</a>
+			
+			<a href="/up_new" class="btn btn-success btn-lg" role="button" style="margin:20px;"><h1><span class="glyphicon glyphicon-plus"></span></h1>Add book</a>
+			<a href="/list2" class="btn btn-warning btn-lg" role="button" style="margin:20px;"><h1><span class="glyphicon glyphicon-pencil"></span></h1>Approve trial</a>
+			
+			<br><br>
+	  
+	  </div>
 
-
-            <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-comments fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>New Comments!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-tasks fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
-                                        <div>New Tasks!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-yellow">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-shopping-cart fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">124</div>
-                                        <div>New Orders!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-support fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
-                                        <div>Support Tickets!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-  
-  
+	  <div class="row col-md-12 text-center">
+		
+		<br><br>
+			
+			<br><br><br><br>
+	  
+	  </div>
 
 
 </div>

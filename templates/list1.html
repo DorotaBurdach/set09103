@@ -2,15 +2,26 @@
 {%block content%}
 
 <div class="container" style="margin-top:100px;" >
+
+<div class="row" style="background:url('http://localhost:5000/static/img/admin.jpg')" >
+<p style="color:transparent">manage books</p><h1 style="color:orange;margin-left:10px"><b>TRIALS APPROVED</b></h1>
+<br><br>
+</div>
+<br><br>
+
+
 	<div class="row" >
 
 <div class="row">
-<h2 style="color:orange;">Trials: Aproved</h2>
+<a href="/list2" class="page-scroll btn btn-xl btn-warning" >See Waiting</a>
+ <a href="/list1" class="page-scroll btn btn-xl btn-success" style="color:black" disabled>Aproved</a>
+
+<hr>
+<h2>Trials: Approved</h2>
 <div class="">
 
 <!--=================HOME=======================-->
-<a href="/list2" class="page-scroll btn btn-xl btn-warning" style="color:black">See Waiting</a>
- <a href="/list1" class="page-scroll btn btn-xl btn-success" style="color:black" disabled>Aproved</a>
+
 	 <h3>guest name</h3>
 	{% for row in list3 %}
    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

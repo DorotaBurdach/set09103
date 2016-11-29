@@ -238,6 +238,11 @@ header {
   color: white;
 }
 
+
+.glyphicon-bed:before {
+  content: "\e219";
+}
+
 header #hed_2{
  background-image: url('../img/mountain_path.jpg');
   background-repeat: no-repeat;

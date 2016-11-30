@@ -1,4 +1,4 @@
-# Sacred Celtic Trees App 
+# Library in Kowary app
 This app was created by Dorota Burdach for the studying purpose of Advanced Web Technologies at Edinburgh Napier University.
 
 #How to run the app

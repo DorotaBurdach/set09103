@@ -1,4 +1,5 @@
 import os
+import ConfigParser
 from flask import Flask, request, render_template, url_for,g, redirect, session, flash, abort
 from functools import wraps
 from werkzeug.utils import secure_filename
@@ -12,6 +13,22 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 app.secret_key = "xyz123456789"
+
+
+def config(app):
+  config = ConfigParser.ConfigParser()
+  try:
+      config_location = "etc/default.cfg"
+      config.read(config_location)
+
+      app.config['DEBUG'] = config.get("config", "debug")
+      app.config['ip_address'] = config.get("config", "ip_address")
+      app.config['port'] = config.get("config", "port")
+      app.config['secret_key'] = config.get("config", "secret_key")
+      app.config['ip_address'] = config.get("config", "ip_address")
+
+  except:
+      print "Error. Could not read configuration from: ", config_location
 #-------------------------------------ERROR----------------
 
 
@@ -571,8 +588,7 @@ def contact():
 	
 
 if __name__ == "__main__":
- app.run( host ='0.0.0.0', debug = True )
-
+ app.run( host ='0.0.0.0', debug = False )
+ 
  #code from the stackoverflow to remove loading erors
  app.run(threaded=True)
-

@@ -1,0 +1,95 @@
+{%extends "base_admin.html"%}
+{%block content%}
+
+<div class="container" style="margin-top:100px;" >
+
+<div class="row" style="background:url('http://localhost:5000/static/img/admin.jpg')" >
+<p style="color:transparent">manage books</p><h1 style="color:orange;margin-left:10px"><b>BOOKS</b></h1>
+<br><br>
+</div>
+<br><br>
+
+	<div class="row" >
+<a href="/up_new" class="page-scroll btn btn-xl btn-success" >+Add book</a>
+<div class="row">
+
+
+
+{% if msg %}
+     <div class="alert alert-info">
+  <strong>Info!</strong>   {{msg}}	  
+</div>
+	  
+	  {% endif %}
+<hr>
+<h2>All books</h2>
+
+    <h3>title/ author </h3>
+	
+	{% for row in list_books %}
+   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#colapse_{{ row['id'] }}" aria-expanded="false" aria-controls="collapseTwo">
+          {{ row["title"] }} / {{ row["author"] }} <a href="/delete_book/{{ row['id'] }}" class="pull-right" style="color:red">delete book</a>   <a href="/edit_book/{{ row['id'] }}" class="pull-right" style="color:green; margin-right:20px;">edit book</a>
+        </a>
+      </h4>
+    </div>
+    <div id="colapse_{{ row['id'] }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo2">
+      <div class="panel-body">
+        <div class="row">
+			<div class="col-md-4">
+			<img src="http://localhost:5000/static/uploads/{{ row['img'] }}">
+			</div>
+			
+			<div class="col-md-8">
+			{{ row["desc"] }}
+			</div>
+		
+		
+		
+		
+		
+		</div>
+    </div>
+  </div>
+  
+  
+
+
+</div>
+	
+  </div>
+  
+   {%  endfor %}
+
+
+
+
+</div>
+
+        	
+      		</div> 
+  	</div>
+
+   		</div> 
+  	</div>
+
+
+{%endblock%}
+
+
+
+{% for row in list3 %}
+
+
+                  <li><a href="/edit/{{ row['id'] }}">{{ row["p_name"] }}({{ row["p_surname"] }})</a></li>
+                  <li><a href="/delete/{{ row['id'] }}">delete</a></li>
+				{%  endfor %}
+             
+	 {% if msg %}
+      <p> {{msg}}</p>
+	  
+	  {% endif %}

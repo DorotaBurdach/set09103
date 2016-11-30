@@ -1,0 +1,27 @@
+<html>
+   <body>
+      
+      <form action = "{{ url_for('insert') }}" method = "POST">
+         <h3>insert</h3>
+         Name<br>
+         <input type = "text" name = "p_name" /></br>
+         
+     <!--    two<br>
+         <textarea name = "add" ></textarea><br>-->
+         
+         Surname<br>
+         <input type = "text" name = "p_surname" /><br>
+		 
+		 Info<br>
+         <input type = "text" name = "p_desc" /><br>
+         
+      
+         <input type = "submit" value = "submit" /><br>
+      </form>
+	  {% if msg %}
+      <p> {{msg}}</p>
+	  
+	  {% endif %}
+	  
+   </body>
+</html>

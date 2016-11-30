@@ -1,0 +1,165 @@
+{%extends "base_guest.html"%}
+{%block content%}
+      
+	  
+	  
+<div class="row" id="guest" >
+
+  <!-- Indicators -->
+
+  <div class="col-md-4">
+  
+
+   
+        
+       
+
+</div>
+<div class="col-md-8" class="thumbnail" id="transp">
+<br>
+{% if msg %}
+<div class="alert alert-info">
+  <strong>Info!</strong>   {{msg}}	  
+</div>
+{% endif %}
+  {% for message in get_flashed_messages() %}
+	<br>
+ <h4 class="error" style="color:red;"><b> {{message}} </b></h4>
+{% endfor %}
+	  
+	  
+	 
+
+      <form action = "" method = "POST">
+
+         <h3>Please fill up all the fields:</h3><br><br>
+	    
+		  <div class="col-md-12" >
+		  	<h2>Personal</h2>
+         Enter your name:
+		
+         <input type = "text" class="form-control" name = "p_name" /></br>
+         </div>
+ 
+         <div class="col-md-12" >
+         Enter your surname:
+		 <input type = "text" class="form-control" name = "p_surname" /><br>
+		 </div>
+		 
+		 <div class="col-md-12" >
+		 Tell something about yourself:
+         <input type = "text" class="form-control"name = "p_desc" /><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Tell more about your trial:
+         <input type = "text" class="form-control" name = "path_desc" /><br>
+         </div>
+      
+	    		
+		  <div class="col-md-12" >
+		  <hr style="color:orange;">
+		  <center><h2>First book</h2></center>
+		 Title:
+         <input type = "text" class="form-control" name = "b1_title" /><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Author:
+         <input type = "text" class="form-control" name = "b1_author" /><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Description (what is for you that book?, why you chose it?):
+         <input type = "text" class="form-control" name = "b1_desc" /><br>
+         </div>
+		 
+		 
+		
+		  <div class="col-md-12" >
+		  <hr style="color:orange;">
+		  <center><h2>Second book</h2></center>
+		 Title:
+         <input type = "text" class="form-control" name = "b2_title" /><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Author:
+         <input type = "text" class="form-control" name = "b2_author" /><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Description (what is for you that book?, why you chose it?):
+         <input type = "text" class="form-control" name = "b2_desc" /><br>
+         </div>
+		 
+		 
+		
+		  <div class="col-md-12" >
+		  <hr style="color:orange;">
+		    <center><h2>Third book</h2></center>
+		 Title:
+         <input type = "text" class="form-control" name = "b3_title" /><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Author:
+         <input type = "text" class="form-control" name = "b3_author" /><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Description (what is for you that book?, why you chose it?):
+         <input type = "text" class="form-control" name = "b3_desc" /><br>
+         </div>
+		 
+		
+		  <div class="col-md-12" >
+		  <hr style="color:orange;">
+		  <center><h2>Fourth book</h2></center>
+		 
+		 Title:
+         <input type = "text" class="form-control" name = "b4_title" /><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Author:
+         <input type = "text" class="form-control" name = "b4_author" /><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Description (what is for you that book?, why you chose it?):
+         <input type = "text" class="form-control" name = "b4_desc" /><br>
+         </div>
+	
+		
+		  <div class="col-md-12" >
+		  <hr style="color:orange;">
+		  <center><h2>Fifth book</h2></center>
+
+		 Title:
+         <input type = "text" class="form-control" name = "b5_title" /><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Author:
+         <input type = "text" class="form-control" name = "b5_author" /><br>
+         </div>
+		 
+		 <div class="col-md-12" >
+		 Description (what is for you that book?, why you chose it?):
+         <input type = "text" class="form-control" name = "b5_desc" /><br>
+         </div>
+
+		 
+		  <div class="col-md-12" >
+		 <button type="submit" class="btn btn-warning btn-block">Submit</button><br>
+         </div>
+        
+      </form>
+	
+  
+
+</div>
+ </div> 
+  
+{%endblock%}

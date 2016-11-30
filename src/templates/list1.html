@@ -1,0 +1,143 @@
+{%extends "base_admin.html"%}
+{%block content%}
+
+<div class="container" style="margin-top:100px;" >
+
+<div class="row" style="background:url('http://localhost:5000/static/img/admin.jpg')" >
+<p style="color:transparent">manage books</p><h1 style="color:orange;margin-left:10px"><b>TRIALS APPROVED</b></h1>
+<br><br>
+</div>
+<br><br>
+
+
+	<div class="row" >
+
+<div class="row">
+<a href="/list2" class="page-scroll btn btn-xl btn-warning" >See Waiting</a>
+ <a href="/list1" class="page-scroll btn btn-xl btn-success" style="color:black" disabled>Aproved</a>
+
+<hr>
+<h2>Trials: Approved</h2>
+<div class="">
+
+<!--=================HOME=======================-->
+
+	 <h3>guest name</h3>
+	{% for row in list3 %}
+   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#colapse_{{ row['id'] }}" aria-expanded="false" aria-controls="collapseTwo">
+          {{ row["p_name"] }} {{ row["p_surname"] }}  <a href="/delete/{{ row['id'] }}" class="pull-right" style="color:red">delete trial</a> <a href="/edit/{{ row['id'] }}" class="pull-right" style="color:green; margin-right:20px;">edit  </a>
+        </a>
+      </h4>
+    </div>
+    <div id="colapse_{{ row['id'] }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo2">
+      <div class="panel-body">
+             <div class="row">
+	   
+				<div class="col-md-3">
+				<hr style=" border-top: 3px solid orange;">
+					<b>Guest image</b><br>
+					{{ row["p_img"] }}
+					<img src="http://localhost:5000/static/uploads/{{ row['p_img'] }}" class="img-responsive">
+				</div>
+				<div class="col-md-3">
+				<hr style=" border-top: 3px solid orange;">
+					<b>Guest description:</b><br>
+					{{ row["p_desc"] }}
+				</div>
+				<div class="col-md-3">
+				<hr style=" border-top: 3px solid orange;">
+					<b>Trial description</b><br>
+					{{ row["path_desc"] }}
+				</div>
+				<div class="col-md-3">
+				<hr style=" border-top: 3px solid orange;">
+					<b>Ip address</b><br>
+					{{ row["ip"] }}
+				</div>
+	  
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2">
+				 <hr style=" border-top: 3px solid orange;">
+					<h3>Book 1</h3>
+					<b>Title:</b><br>{{ row["b1_title"] }}<br>
+					<b>Author:</b><br>{{ row["b1_author"] }}<br>
+					<b>Desc:</b><br>{{ row["b1_desc"] }}<br>
+				</div>
+				<div class="col-md-2">
+					<hr style=" border-top: 3px solid orange;">
+					<h3>Book 2</h3><br>
+					<b>Title:</b><br>{{ row["b2_title"] }}<br>
+					<b>Author:</b><br>{{ row["b2_author"] }}<br>
+					<b>Description:</b><br>{{ row["b2_desc"] }}<br>
+				</div>
+				<div class="col-md-2">
+					<hr style=" border-top: 3px solid orange;">
+					<h3>Book 3</h3><br>
+					<b>Title:</b><br>{{ row["b3_title"] }}<br>
+					<b>Author:</b><br>{{ row["b3_author"] }}<br>
+					<b>Description:</b><br>{{ row["b3_desc"] }}<br>
+				</div>
+				<div class="col-md-2">
+					<hr style=" border-top: 3px solid orange;">
+					<h3>Book 4</h3><br>
+					<b>Title:</b><br>{{ row["b4_title"] }}<br>
+					<b>Author:</b><br>{{ row["b4_author"] }}<br>
+					<b>Description:</b><br>{{ row["b4_desc"] }}<br>
+				</div>
+				<div class="col-md-2">
+					<hr style=" border-top: 3px solid orange;">
+					<h3>Book 5</h3><br>
+					<b>Title:</b><br>{{ row["b5_title"] }}<br>
+					<b>Author:</b><br>{{ row["b5_author"] }}<br>
+					<b>Description:</b><br>{{ row["b5_desc"] }}<br>
+				</div>
+				
+				</div>
+			</div>
+    </div>
+  </div>
+  
+  
+
+
+</div>
+	{%  endfor %}
+  </div>
+  
+   
+</div>
+
+
+
+</div>
+
+        	
+      		</div> 
+  	</div>
+
+   		</div> 
+  	</div>
+
+
+{%endblock%}
+
+
+
+{% for row in list3 %}
+
+
+                  <li><a href="/edit/{{ row['id'] }}">{{ row["p_name"] }}({{ row["p_surname"] }})</a></li>
+                  <li><a href="/delete/{{ row['id'] }}">delete</a></li>
+				{%  endfor %}
+             
+	 {% if msg %}
+      <p> {{msg}}</p>
+	  
+	  {% endif %}

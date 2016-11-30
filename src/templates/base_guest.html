@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Library Guest</title>
+
+    <!-- Bootstrap -->
+  
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/guest.css')}}">
+  
+  </head>
+  
+ 
+  
+  
+  
+  <body style="margin-top:50px;">
+      <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-fixed-top navbar-inverse" >
+       
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top" style="color:#fec503;">Library in Kowary</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav ">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+					   <li>
+                        <a href="/guest">Home</a>
+                    </li>
+                    <li>
+                        <a href="/up">Create my trail</a>
+                    </li>
+                    <li>
+                        <a  href="/contact">Contact</a>
+                    </li>
+					
+                </ul>
+				<ul class="nav navbar-nav navbar-right" style="margin-right:5%">
+				<li>
+                        <a  href="/logout_guest">Logout</a>
+                    </li>
+				</ul>
+            </div>
+            <!-- /.navbar-collapse -->
+     
+        <!-- /.container-fluid -->
+    </nav>
+	<section>
+	
+   {%block content %}{%endblock%}
+   
+   </section>
+ 
+  <footer style="background-color:black;color:white;padding-top:30px;padding-bottom:30px;" >
+       <div class="container">
+          
+                <div class="col-md-12 text-center">
+                    <span>Copyright &copy; Library in Kowary 2016</span>
+                </div>
+             
+            
+          
+       </div>
+    </footer>
+  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+  </body>
+</html>

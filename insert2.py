@@ -499,11 +499,12 @@ def uploaded_file(filename):
         b5_title = request.form['b5_title']
         b5_author = request.form['b5_author']
         b5_desc = request.form['b5_desc']
+        ip = request.remote_addr
 
         if (p_name and p_surname and p_desc and path_desc and b1_title and b1_author and b1_desc and b2_title and b2_author and b2_desc and b3_title and b3_author and b3_desc and b4_title and b4_author and b4_desc and b5_title and b5_author and b5_desc):
            con = sqlite3.connect("books.db")
            cur = con.cursor()
-           cur.execute("INSERT INTO books (p_name, p_surname, p_desc, p_img, path_status, path_desc, b1_title, b1_author, b1_desc, b2_title, b2_author, b2_desc, b3_title, b3_author, b3_desc, b4_title, b4_author, b4_desc, b5_title, b5_author,b5_desc) VALUES (?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?,?)",(p_name,p_surname,p_desc, filename, 1, path_desc,b1_title, b1_author, b1_desc, b2_title, b2_author, b2_desc, b3_title, b3_author, b3_desc, b4_title, b4_author,  b4_desc, b5_title, b5_author,  b5_desc) )
+           cur.execute("INSERT INTO books (p_name, p_surname, p_desc, p_img, path_status, path_desc, b1_title, b1_author, b1_desc, b2_title, b2_author, b2_desc, b3_title, b3_author, b3_desc, b4_title, b4_author, b4_desc, b5_title, b5_author,b5_desc, ip) VALUES (?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?, ?,?,?,?,?,?,?)",(p_name,p_surname,p_desc,filename,1,path_desc, b1_title,b1_author,b1_desc, b2_title,b2_author,b2_desc,b3_title,b3_author,b3_desc,b4_title, b4_author,  b4_desc, b5_title, b5_author,  b5_desc, ip) )
 
            con.commit()
            msg = "Record successfully added"
@@ -566,6 +567,7 @@ def contact():
     return render_template("contact.html", msg=msg)	
   else:
     abort(401)
+
 	
 
 if __name__ == "__main__":

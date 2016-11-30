@@ -30,7 +30,7 @@
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#colapse_{{ row['id'] }}" aria-expanded="false" aria-controls="collapseTwo">
-          {{ row["p_name"] }} {{ row["p_surname"] }}  <a href="/delete/{{ row['id'] }}" class="pull-right" style="color:red">delete message</a> <a href="/edit/{{ row['id'] }}" class="pull-right" style="color:green; margin-right:20px;">edit  </a>
+          {{ row["p_name"] }} {{ row["p_surname"] }}  <a href="/delete/{{ row['id'] }}" class="pull-right" style="color:red">delete trial</a> <a href="/edit/{{ row['id'] }}" class="pull-right" style="color:green; margin-right:20px;">edit  </a>
         </a>
       </h4>
     </div>
@@ -38,21 +38,26 @@
       <div class="panel-body">
              <div class="row">
 	   
-				<div class="col-md-2">
+				<div class="col-md-3">
 				<hr style=" border-top: 3px solid orange;">
 					<b>Guest image</b><br>
 					{{ row["p_img"] }}
 					<img src="http://localhost:5000/static/uploads/{{ row['p_img'] }}" class="img-responsive">
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-3">
 				<hr style=" border-top: 3px solid orange;">
 					<b>Guest description:</b><br>
 					{{ row["p_desc"] }}
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-3">
 				<hr style=" border-top: 3px solid orange;">
 					<b>Trial description</b><br>
 					{{ row["path_desc"] }}
+				</div>
+				<div class="col-md-3">
+				<hr style=" border-top: 3px solid orange;">
+					<b>Ip address</b><br>
+					{{ row["ip"] }}
 				</div>
 	  
 			</div>
@@ -103,10 +108,10 @@
 
 
 </div>
-	
+	{%  endfor %}
   </div>
   
-   {%  endfor %}
+   
 </div>
 
 
